@@ -1,0 +1,13 @@
+#!/bin/bash
+
+start_time=8
+current_time=9
+end_time=11
+
+if [ $current_time -lt $start_time ]; then
+    echo "Session not yet started"
+elif [ $current_time -gt $end_time ]; then
+    echo "Session completed"
+elif [ $current_time -ge $start_time ] && [ $current_time -le $end_time ]; then
+    echo "Session ongoing"
+fi
