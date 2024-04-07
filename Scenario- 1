@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Settings
 start_time=8
 current_time=9
 end_time=11
 
-# Logic
 if [ $current_time -lt $start_time ]; then
     echo "Session not yet started"
 elif [ $current_time -gt $end_time ]; then
