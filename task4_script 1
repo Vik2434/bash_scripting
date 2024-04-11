@@ -1,0 +1,13 @@
+#!/bin/bash
+
+URL="https://www.guvi.in/courses/"
+
+# Get HTTP code only and store it
+http_code=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+
+# Check for success/failure
+if [ $http_code -ge 200 ] && [ $http_code -lt 300 ]; then
+    echo "Success! HTTP code: $http_code"
+else
+    echo "Request Failed. HTTP code: $http_code"
+fi
