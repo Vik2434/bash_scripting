@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if file path is provided as argument
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+# Check if file exists
+if [ ! -f "$1" ]; then
+    echo "File not found: $1"
+    exit 1
+fi
+
+# Temporary file
+tmp_file=$(mktemp)
+
+# Copy lines from original file to temporary file
+awk 'NR < 5 || !/welcome/ {print} NR >= 5 && /welcome/ {gsub("give", 
+"learning")} NR >= 5 {print}' "$1" > "$tmp_file"
+
+# Replace original file with temporary file
+mv "$tmp_file" "$1"
+
+echo "Word 'give' replaced with 'learning' from the 5th line till the end 
+in lines containing 'welcome'"
+
